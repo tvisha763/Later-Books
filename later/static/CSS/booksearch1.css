@@ -1,0 +1,44 @@
+#book_query {
+    display: block;
+    margin: 20 px;
+    text-align: center;
+}
+img {
+    vertical-align: middle;
+    display: inline-block;
+    width: 350px;
+    height:auto;
+    margin: 20px;
+   
+} 
+#title {
+    text-decoration: none;
+    display: block;
+    margin: 20px;
+    font-size: xx-large;
+    color: #002c6d;
+}
+
+
+#addtolist {
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+    height: 60px;
+    margin: 20px;
+    font-size: 17px;
+}
+
+body{
+    background-image: linear-gradient(rgb(132, 0, 255), hsl(265, 100%, 56%), rgb(0, 162, 255), rgb(0, 229, 255), rgb(0, 255, 213));
+}
+
+
+.navbar{
+    width: auto;
+    max-width: 900px;
+    min-width: 678px;
+    /* min-width: 1300px;
+    max-width: 1350px; */
+    margin-right: 10px;
+}

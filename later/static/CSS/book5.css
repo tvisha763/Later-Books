@@ -1,0 +1,134 @@
+#container{ 
+    align-items: flex-start;
+    
+}
+
+#title{
+    border: lightblue;
+    border-radius: 30px;
+}
+
+img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 350px;
+    height: auto;
+    margin: 20px;
+
+}
+
+h1{
+    color: rgb(218, 255, 250);
+    margin: 20px;
+    font-family: 'fantasy', 'cursive', 'Times New Roman', Times, serif;
+}
+
+body{
+    background-image: linear-gradient(rgb(140, 0, 255), #ad81ff, rgb(235, 184, 255));
+}
+
+p{
+    width: 675px;
+    margin: 20px;
+}
+
+.author h4{
+    margin: -2px;
+}
+
+.publisher h4{
+    margin: -2px;
+}
+
+.author{
+    margin: 10px;
+    margin-left: 20px;
+}
+
+.publisher{
+    margin: 10px;
+    margin-left: 20px;
+}
+
+#addtolist {
+    display: inline-block;
+
+    vertical-align: middle;
+    background-color: turquoise;
+    color: aliceblue;
+    height: 66px;
+    width: 172px;
+    margin: 20px;
+    font-size: 17px;
+}
+
+#preview{
+    display: inline-block;
+
+    vertical-align: middle;
+    background-color: turquoise;
+    color: aliceblue;
+    height: 66px;
+    width: 172px;
+    margin: 20px;
+    font-size: 17px;
+}
+
+comments{
+    margin: 30px;
+}
+
+.navbar{
+    width: auto;
+    max-width: 675px;
+    min-width: 675px;
+    /* min-width: 1300px;
+    max-width: 1350px; */
+    margin-right: 10px;
+}
+
+.comments h4{
+    /* margin: 20px; */
+    size: 60px;
+    font-size: xx-large;
+    font-family: 'fantasy', 'cursive', 'Times New Roman', Times, Serif ;
+    color: lemonchiffon;
+}
+
+.input{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.input textarea{
+     width: auto; 
+    min-width: 600px;
+    font-size: medium;
+
+}
+
+.input button{
+    background-color: orchid;
+    color: palegoldenrod;
+    width: auto; 
+    min-width: 60.03px;
+    width: auto; 
+    min-height: 38px;
+    font-size: large;
+    margin-right: 50px;
+    
+    
+}
+
+.output{
+    background-color: rgb(255, 250, 231);
+    font-size: medium;
+    padding: 10px;
+    border-radius: 15px;
+    width: auto;
+    min-width: 680px;
+    height: 500px;
+    margin-bottom: 20px;
+    overflow: auto;
+    max-width: 678px;
+}

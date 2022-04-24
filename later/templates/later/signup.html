@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet"  href="{%  static  'CSS/signup3.css'  %}"> 
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+
+
+            <form action="signup" method= "POST" >  
+                {% csrf_token %}              
+                <div class="signupBox">
+                    <img src="{% static '/assets/logo.png' %}" alt="logo image">
+                    <div class="top">
+                        
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+
+                        <input type="text" placeholder="character name" name = "username">
+                        <input type="email" placeholder="email" name = "email">
+                        <input type="password" placeholder="password" name = "password"> 
+                        <input type="password" placeholder="Confirm password" name = "confirmPass">
+                        <button type="submit">signup</button>
+                
+                    </div>
+
+                    
+
+                    <div class="bottom">
+                        Already have an account? Log in
+                        <a href="{% url 'login' %}">here</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer">
+            
+        </div>
+
+    </div>
+
+</body>
+</html>

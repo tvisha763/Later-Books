@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Later Social Media</title>
+    {% load static %}
+    <link rel="stylesheet"  href="{%  static  'CSS/login2.css'  %}">
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            
+
+        <form action="" method= "POST" >  
+            {% csrf_token %}  
+            
+            <div class="loginBox">  
+                    
+
+                    <div class="top">
+                        <img src="{% static '/assets/logo.png' %}" alt="logo image">
+                        {% for message in messages %}
+                        <div class="alert alert-success">
+                            <a href="#" data-dismiss="alert" class="close"x></a>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        <input type="email" placeholder="email" name="email">
+                        <input type="password" placeholder="password" name="password"> 
+                        <button id="login" type="submit">login</button>
+                    </div>
+                    <div class="bottom">
+                        Don't have an account? Sign up 
+                        <a href="{% url 'signup' %}">here</a>
+                
+                    </div>
+                
+            </div>
+        </form>    
+        </div>
+
+        <div class="footer">
+            
+        </div>
+
+    </div>
+
+</body>
+
+</html>
