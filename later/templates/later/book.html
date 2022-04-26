@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% load bootstrap5 %}
+    {% load bootstrap_icons %}
+    {%bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <link rel="stylesheet" href="{% static 'CSS/book5.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <div class="container">
+        <div class="navbar">
+            <nav class="navbar navbar-light" style="background-color: rgb(226, 167, 255);">
+                <div class="container-fluid">
+                    <a id ="back" style="color: rgb(29, 108, 109); margin: none;">{% bs_icon 'arrow-left-circle' size='2em' %}</a>
+    
+                  <form class="d-flex" action="{% url 'apiCall' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="bookName" id="bookName" style="border-radius: 0px;width: auto; min-width: 100px;">
+                    <button  type="submit" style="color: ivory; background-color: steelblue; border-radius: 0px; width: auto; min-width: 40px;">Search</button>
+                  </form>
+                  <!-- <form action="logout" method= "POST" >
+                    {% csrf_token %}
+                        <button type="submit" style="background-color: turquoise; color: aliceblue; width: auto; min-width: 40px; height: 38px;">Log Out</button>
+                    </form> -->
+                </div>
+              </nav>
+        </div>
+    <div class="everythingelse">
+        
+        <div class="titleimg">
+            <img src="{{book_looked_up.volumeInfo.imageLinks.smallThumbnail}}">
+            <form action="{% url 'addToReadingList' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{book_looked_up.id}}" name="bookToAdd" id="bookToAdd">
+                <input type="hidden" value="{{book_looked_up.volumeInfo.title}}" name="bookname" id="bookname">
+                <button id='addtolist'>add to reading list</button>
+            </form>
+            <!-- <button id='preview'>preview</button> -->
+            <h1>{{book_looked_up.volumeInfo.title}}</h1>
+          </div>
+
+        <div class="bookinfo">
+            <div class="author">
+                <h4>Authors:</h4>
+                {% for author in book_looked_up.volumeInfo.authors %}
+                    <li>{{author}}</li>
+                {% endfor %}
+            </div>
+            <div class="publisher">
+                <h4>Publisher:</h4>
+                <li>{{book_looked_up.volumeInfo.publisher}}</li>
+            </div>
+            <p>{{book_looked_up.volumeInfo.description|safe}}</p>
+
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('back').addEventListener('click', () => {
+            history.back()
+        })
+    </script>
+    <div class="container">
+        <div class="comments">
+            <h4>Opinions</h4>
+            
+            <div class="input">
+                <form action="{% url 'comments' %}" method="post" >
+                    {% csrf_token %}
+                    <input type="hidden"  value="{{book_looked_up.id}}" name="bookToComment" id="bookToComment">
+                    <textarea type="text" placeholder="Type your opinion here" name="message"></textarea>
+                    </br>
+                    <button type="submit">Post</button>
+                </form>
+                        
+            </div>
+
+            <div class="output">
+                {% for opinion in opinions %}
+                    {% if opinion.book_id == book_looked_up.id %}
+                        <strong>
+                            {{ opinion.user.username }} - 
+                            {{ opinion.date }}
+                        </strong>
+                        <br/>
+                        {{ opinion.message }}
+                        <!-- <br/> -->
+                        <hr>
+                      
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+                        
+                    
+    
+               
+        </div>      
+    </div>
+    </div>
+          
+    
+
+
+
+</body>
+</html>

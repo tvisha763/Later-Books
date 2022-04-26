@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% load bootstrap_icons %}
+    {%bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <link rel="stylesheet"  href="{%  static  'CSS/dashboard.css'  %}">
+</head>
+<body>
+    <div class="header">
+        <div class="top">
+            
+            <div class="search">
+                <div class="sitename">
+                    <img src="{% static '/assets/logo 4.png' %}" alt="logo image" id="logo">
+                </div>
+                <form action="{% url 'apiCall' %}" method= "GET" >
+                    {% csrf_token %}
+                    <input type="text" placeholder="Search Books, Authors, Characters, Keywords" name = "bookName" id = "bookName">
+                    <div class="searchbutton">
+                        <button type="submit">Search</button>
+                    </div>
+                    
+                </form>
+                <form action="logout" method= "POST" >
+                        {% csrf_token %}
+                        <div class="logout">
+                            <button type="submit">Log Out</button>
+                        </div>
+                        
+                </form>
+                
+                 
+            </div>
+            
+            <div class="greeting">
+               
+                <p id='greeting'>Hello {{request.session.username}}</p>
+            </div>
+            
+        </div>
+
+        
+    </div>
+    <div class="bottom">
+        <div class="readinglist">
+            <div class="heading">
+                <h2>Reading List</h2>
+            </div>
+            
+
+
+        
+        {% for book in context.reading_list %}
+        <!-- <ul>
+            <li> -->
+                <div class="book">
+                    <img src= {{book.img}} id="bookimg">
+                    <a href={{book.link}} id="book_name"> {{book.name}} </a>
+                    <form action="{% url 'removeFromReadingList' %}" method="post">
+                        {% csrf_token %}
+                        <button type='submit' id='finished'>finished</button>
+                        <input type="hidden" value="{{book.id}}" name="bookid" id="bookid">
+                        <input type="hidden" value="{{book.volumeInfo.title}}" name="bookname" id="bookname">
+                    </form>
+                </div>
+            <!-- </li>
+          </ul> -->
+            
+        {% endfor %}
+        </div>
+        <div class="finished">
+            <div class="heading">
+                <h2>Library</h2>
+            </div>
+            
+            {% for book in context.finished %}
+                    <div class="book">
+                        <img src= {{book.img}} id="bookimg">
+                        <a href={{book.link}} id="book_name"> {{book.name}} </a>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>

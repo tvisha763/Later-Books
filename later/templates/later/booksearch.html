@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>search res</title>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% load bootstrap_icons %}
+    {%bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <link rel="stylesheet" href="{% static 'CSS/booksearch1.css' %}" />
+  </head>
+<body>
+    <div class="container">
+      <div class="navbar">
+        <nav class="navbar navbar-light" style="background-color: rgb(226, 167, 255);;">
+          <div class="container-fluid">
+            <a id ="back" style="color: rgb(29, 108, 109); margin: none;">{% bs_icon 'arrow-left-circle' size='2em' %}</a>
+            <form class="d-flex" action="{% url 'apiCall' %}">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="bookName" id="bookName" style="border-radius: 0px; width: auto; min-width: 100px;">
+              <button  type="submit" style="color: ivory; border-color: steelblue; background-color: steelblue; border-radius: 0px; width: auto; min-width: 40px;">Search</button>
+            </form>
+            <!-- <form action="logout" method= "POST" >
+              {% csrf_token %}
+                  <button type="submit" style="background-color: turquoise; color: aliceblue; width: auto; min-width: 40px; height: 38px;">Log Out</button>
+              </form> -->
+          </div>
+        </nav>
+      </div>
+        
+
+        
+        {% for res in api_res.items %}
+          <img src="{{ res.volumeInfo.imageLinks.thumbnail}}" alt="" srcset="" >
+          <a href="api/book/{{res.id}}" id="title" style="text-decoration: none; color: rgb(56, 0, 63); font-size: larger;"><h5 class="card-title">{{res.volumeInfo.title}}</h5></a> 
+              
+        {% endfor %}
+      </div>
+    </div>
+    <script>
+      document.getElementById('back').addEventListener('click', () => {
+          history.back()
+      })
+    </script>
+  </body>
+</html>
