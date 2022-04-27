@@ -87,7 +87,7 @@ def login(request):
             messages.error(request, "An account with this email does not exist. Please sign up.")
             return redirect('login')
 
-    return render(request, 'later/index.html')
+    return render(request, 'later/login.html')
 
 
 #def add_to_reading_list(request):
